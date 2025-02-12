@@ -1,2 +1,2 @@
-# Mentako_LIINEBot
+# Mentako_LINEBot
 めんたこの配信開始をお知らせをするアカウントのソースコードです。
