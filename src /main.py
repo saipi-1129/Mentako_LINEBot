@@ -84,9 +84,13 @@ def select_from_sql(userid):
             # パラメータをタプルで渡す (userid, )の形式
             cursor.execute(select_query, (userid,))
             result = cursor.fetchone()
-            latest_live_id = result[0]
-            print(f"latest Live ID = {latest_live_id}")
-            return latest_live_id
+            if result:
+                latest_live_id = result[0]
+                print(f"latest Live ID = {latest_live_id}")
+                return latest_live_id
+            else:
+                print(f"No live_id found for userid = {userid}")
+                return None
 
     except Error as e:
         print(f"Error while connecting to MySQL: {e}")
@@ -98,7 +102,6 @@ def select_from_sql(userid):
             print("MySQL connection is closed")
 
 
-
 # 配信のモニタリング
 def monitor_stream(userids):
     last_live_ids = {}  # ユーザーごとの最後のlive_idを記録
@@ -106,7 +109,7 @@ def monitor_stream(userids):
         for userid in userids:
             live_id, name, message = check_stream(userid)  # 各ユーザーの配信状況を確認
             if live_id:
-                latest = select_from_sql(userid)
+                latest = select_from_sql(userid) #あらかじめSQLにuseridを追加しておかないとエラーが出る
                 if live_id != latest:  # 新しい配信IDなら処理
                     push_message(message)  # LINEにメッセージを送信
                     insert_to_sql(userid,name, live_id)  # データベースに挿入
@@ -115,6 +118,7 @@ def monitor_stream(userids):
                     print(f"{userid}の配信は新しくありません。再確認します。")
             else:
                 print(f"{userid}の配信は行われていません。再確認します。")
+            print("////////////////////////////////////////////////////")
         time.sleep(60)  # 1分待機
 
 
