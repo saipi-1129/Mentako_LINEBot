@@ -2,8 +2,6 @@ import time
 import requests
 import mysql.connector
 from mysql.connector import Error
-
-
 import json 
 
 from modules.connect import connect_to_sql
@@ -11,9 +9,6 @@ from modules.check import check_stream
 from modules.insert import insert_to_sql
 from modules.select import select_from_sql
 from modules.push import push_message  # push_messageを追加
-
-
-
 
 # 配信のモニタリング
 def monitor_stream(userids):
