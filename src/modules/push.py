@@ -11,8 +11,6 @@ LINE_CHANNEL_ACCESS_TOKEN = config['LINE_CHANNEL_ACCESS_TOKEN']
 configuration = Configuration()
 configuration.access_token = LINE_CHANNEL_ACCESS_TOKEN
 
-
-
 def push_message(message):
     try:
         with ApiClient(configuration) as api_client:

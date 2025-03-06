@@ -13,7 +13,7 @@ def select_from_sql(userid):
         if connection.is_connected():
             cursor = connection.cursor()
 
-            select_query = """SELECT live_id FROM test WHERE userid = %s ORDER BY live_id DESC LIMIT 1;"""
+            select_query = """SELECT live_id FROM test WHERE userid = %s ORDER BY live_id ASC LIMIT 1;"""
             # パラメータをタプルで渡す (userid, )の形式
             cursor.execute(select_query, (userid,))
             result = cursor.fetchone()
