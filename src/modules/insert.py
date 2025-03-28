@@ -5,7 +5,7 @@ import pytz
 
 # 現在時刻を取得
 timezone = pytz.timezone("Asia/Tokyo")
-current_time = datetime.datetime.now(timezone)
+
 
 # MySQLに接続してデータを保存
 def insert_to_sql(userid, name, live_id):
@@ -22,6 +22,7 @@ def insert_to_sql(userid, name, live_id):
 
             # データを挿入するSQLクエリ
             insert_query = """INSERT INTO test (userid, name, live_id, time) VALUES (%s, %s, %s, %s)"""
+            current_time = datetime.datetime.now(timezone)
             cursor.execute(insert_query, (userid, name, live_id, current_time))
             connection.commit()
             print(f"Record inserted: Name = {name}, Live ID = {live_id}")
