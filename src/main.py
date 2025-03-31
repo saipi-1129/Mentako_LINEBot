@@ -19,7 +19,7 @@ def monitor_stream(userids):
         for userid in userids:
             live_id, name, message = check_stream(userid)  # 各ユーザーの配信状況を確認
             if live_id:
-                latest = select_from_sql(userid) #あらかじめSQLにuseridを追加しておかないとエラーが出る
+                latest = select_from_sql(userid)
                 if live_id != latest:  # 新しい配信IDなら処理
                     print("送信しました")
                     push_message(message)  # LINEにメッセージを送信
