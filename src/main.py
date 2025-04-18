@@ -24,13 +24,13 @@ def monitor_stream(userids):
                     print("送信しました")
                     push_message(message)  # LINEにメッセージを送信
                     insert_to_sql(userid, name, live_id)  # データベースに挿入
-                    print(message)  # メッセージを表示
+                    print(message)
                 else:
                     print(f"{userid}の配信は新しくありません。再確認します。")
             else:
                 print(f"{userid}の配信は行われていません。再確認します。")
             print("////////////////////////////////////////////////////")
-        time.sleep(10)  # 1分待機
+        time.sleep(10)  # 待機
 
 # ユーザーIDリスト
 userids = ["126246308"]  # 実際のユーザーIDをリストに追加してください
