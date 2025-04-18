@@ -6,12 +6,9 @@ import pytz
 # 現在時刻を取得
 timezone = pytz.timezone("Asia/Tokyo")
 
-
-# MySQLに接続してデータを保存
 def insert_to_sql(userid, name, live_id):
     connection = None  # connection を初期化
     try:
-        # MySQLに接続
         connection = connect_to_sql()
         if connection is None:
             print("Failed to connect to MySQL")
