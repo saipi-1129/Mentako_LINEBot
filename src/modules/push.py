@@ -2,7 +2,6 @@ import json
 from linebot.v3.messaging import MessagingApi, TextMessage, BroadcastRequest
 from linebot.v3.messaging.api_client import ApiClient, Configuration
 
-# config.json の読み込み
 with open('config.json', 'r') as f:
     config = json.load(f)
 
