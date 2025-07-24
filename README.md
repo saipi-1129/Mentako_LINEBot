@@ -8,4 +8,5 @@ https://www.mirrativ.com/user/126246308
 # 稼働状況
 https://uptime.saipi1129.com/status/mentako
 
+# 登録
 https://lin.ee/gSE1QF5
